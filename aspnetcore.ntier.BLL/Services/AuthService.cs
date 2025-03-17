@@ -39,8 +39,8 @@ public class AuthService : IAuthService
             throw new UserNotFoundException();
 
         var userToReturn = _mapper.Map<UserToReturnDTO>(user);
-        userToReturn.Token = GenerateToken(user.UserId, user.Username);
-        userToReturn.RefreshToken = GenerateToken(user.UserId, user.Username, true);
+        userToReturn.Token = GenerateToken(user.Id, user.Username);
+        userToReturn.RefreshToken = GenerateToken(user.Id, user.Username, true);
 
         return userToReturn;
     }
@@ -52,8 +52,8 @@ public class AuthService : IAuthService
         var addedUser = await _userRepository.AddAsync(_mapper.Map<User>(userToRegisterDTO));
 
         var userToReturn = _mapper.Map<UserToReturnDTO>(addedUser);
-        userToReturn.Token = GenerateToken(addedUser.UserId, addedUser.Username);
-        userToReturn.RefreshToken = GenerateToken(addedUser.UserId, addedUser.Username, true);
+        userToReturn.Token = GenerateToken(addedUser.Id, addedUser.Username);
+        userToReturn.RefreshToken = GenerateToken(addedUser.Id, addedUser.Username, true);
 
         return userToReturn;
     }

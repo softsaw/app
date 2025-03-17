@@ -64,3 +64,5 @@ app.UseSwaggerUI(c =>
 app.Run();
 
 public partial class Program { }
+
+// Build triggered for Gens project - Family Tree Management System

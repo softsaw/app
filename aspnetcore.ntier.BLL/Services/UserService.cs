@@ -32,7 +32,7 @@ public class UserService : IUserService
     public async Task<UserDTO> GetUserAsync(int userId, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation("User with userId = {UserId} was requested", userId);
-        var userToReturn = await _userRepository.GetAsync(x => x.UserId == userId, cancellationToken);
+        var userToReturn = await _userRepository.GetAsync(x => x.Id == userId, cancellationToken);
 
         if (userToReturn is null)
         {
@@ -54,7 +54,7 @@ public class UserService : IUserService
     public async Task<UserDTO> UpdateUserAsync(UserToUpdateDTO userToUpdateDTO)
     {
         userToUpdateDTO.Username = userToUpdateDTO.Username.ToLower();
-        var user = await _userRepository.GetAsync(x => x.UserId == userToUpdateDTO.UserId);
+        var user = await _userRepository.GetAsync(x => x.Id == userToUpdateDTO.UserId);
 
         if (user is null)
         {
@@ -71,7 +71,7 @@ public class UserService : IUserService
 
     public async Task DeleteUserAsync(int userId)
     {
-        var userToDelete = await _userRepository.GetAsync(x => x.UserId == userId);
+        var userToDelete = await _userRepository.GetAsync(x => x.Id == userId);
 
         if (userToDelete is null)
         {
