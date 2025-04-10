@@ -1,21 +1,19 @@
 namespace aspnetcore.ntier.DAL.Enums
 {
-
-    /// Medeni durum tiplerini temsil eden enum
-
+    // Medeni durum bilgisini temsil eden enum
+    // Kişinin medeni durumunu belirtmek için kullanılır
     public enum MaritalStatus
     {
-       
-        /// Bekar
+        // Bekar
         Single = 0,
         
-        /// Evli
+        // Evli
         Married = 1,
         
-        /// Boşanmış
+        // Boşanmış
         Divorced = 2,
         
-        /// Dul
+        // Dul
         Widowed = 3
     }
 } 

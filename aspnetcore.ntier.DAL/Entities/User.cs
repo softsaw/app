@@ -1,4 +1,9 @@
 ﻿using aspnetcore.ntier.DAL.Enums;
+using System.Collections.Generic;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using BaseEntity = aspnetcore.ntier.DAL.Entities.BaseEntity;
 
 
 namespace aspnetcore.ntier.DAL.Entities
@@ -85,8 +90,11 @@ namespace aspnetcore.ntier.DAL.Entities
         public virtual ICollection<User> Children { get; set; } = new List<User>();
         
         // Kardeşler koleksiyonu
-        public virtual ICollection<User> Siblings { get; set; } = new List<User>();
+        public virtual ICollection<UserSibling> Siblings { get; set; } = new List<UserSibling>();
         
+        // Kardeş olunan kişiler koleksiyonu
+        public virtual ICollection<UserSibling> SiblingOf { get; set; } = new List<UserSibling>();
+
         // Amcalar koleksiyonu (babanın erkek kardeşleri)
         public virtual ICollection<User> PaternalUncles { get; set; } = new List<User>();
         
@@ -101,5 +109,30 @@ namespace aspnetcore.ntier.DAL.Entities
         
         // Kuzenler koleksiyonu
         public virtual ICollection<User> Cousins { get; set; } = new List<User>();
+
+        // Grandparents
+        public User PaternalGrandfather { get; set; }
+        public User PaternalGrandmother { get; set; }
+        public User MaternalGrandfather { get; set; }
+        public User MaternalGrandmother { get; set; }
+
+        // In-laws
+        public User FatherInLaw { get; set; }
+        public User MotherInLaw { get; set; }
+
+        // Nieces/Nephews (Collection)
+        public ICollection<User> Nieces { get; set; }
+        public ICollection<User> Nephews { get; set; }
+
+        // Eksik navigasyon özellikleri
+        public ICollection<User> Grandparents { get; set; } = new List<User>();
+        public ICollection<User> Grandchildren { get; set; } = new List<User>();
+
+        public virtual ICollection<User> PaternalNephews { get; set; } = new List<User>();
+        public virtual ICollection<User> MaternalNephews { get; set; } = new List<User>();
+
+        // Yeğenler koleksiyonları
+        public virtual ICollection<User> PaternalNieces { get; set; } = new List<User>();
+        public virtual ICollection<User> MaternalNieces { get; set; } = new List<User>();
     }
 }

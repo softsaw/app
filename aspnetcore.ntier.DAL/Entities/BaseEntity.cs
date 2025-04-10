@@ -2,29 +2,29 @@ using System;
 
 namespace aspnetcore.ntier.DAL.Entities
 {
-    // Base entity class that contains common audit fields for all entities
-    // This helps track when and by whom records were created or modified
+    // Tüm entity'ler için temel sınıf
+    // Ortak özellikleri içerir
     public abstract class BaseEntity
     {
         // Primary key for the entity
         public int Id { get; set; }
         
-        // Date and time when the record was created
+        // Oluşturulma tarihi
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         
-        // Date and time when the record was last updated
+        // Son güncelleme tarihi
         public DateTime? UpdatedAt { get; set; }
         
-        // ID of the user who created the record
-        public string CreatedBy { get; set; }
+        // Oluşturan kullanıcı ID'si
+        public string? CreatedBy { get; set; }
         
-        // ID of the user who last updated the record
-        public string UpdatedBy { get; set; }
+        // Son güncelleyen kullanıcı ID'si
+        public string? UpdatedBy { get; set; }
         
-        // Flag to indicate if the record is deleted (for soft delete)
+        // Silindi mi?
         public bool IsDeleted { get; set; } = false;
         
-        // Used for concurrency control to prevent conflicting updates
-        public byte[] RowVersion { get; set; }
+        // Concurrency control için kullanılır
+        public byte[]? RowVersion { get; set; }
     }
 } 

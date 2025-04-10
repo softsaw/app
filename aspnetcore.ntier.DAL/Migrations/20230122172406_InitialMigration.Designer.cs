@@ -44,9 +44,9 @@ namespace aspnetcore.ntier.DAL.Migrations
                         new
                         {
                             UserId = 1,
-                            Name = "John",
-                            Surname = "Doe",
-                            Username = "johndoe"
+                            Name = "emrah",
+                            Surname = "kocak",
+                            Username = "emrahkocak"
                         });
                 });
 #pragma warning restore 612, 618
